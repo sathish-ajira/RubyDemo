@@ -33,6 +33,15 @@ class UsersController < ApplicationController
     end
   end
 
+# PATCH/PUT /users/1
+  def set
+    if @user.update(user_params)
+      render json: @user
+    else
+      render json: @user.errors, status: :unprocessable_entity
+    end
+  end 
+
   # DELETE /users/1
   def destroy
     @user.destroy
